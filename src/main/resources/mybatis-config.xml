@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <!-- 选择 JDBC 配置文件 -->
+    <properties resource="db.properties"></properties>
+
+    <!-- 注册对象的空间命名 environments -->
+    <environments default="development">
+        <!-- environment id 与 environments default 相同，否则运行时会报错，本例中都是 api_test -->
+        <environment id="development">
+            <!-- 指定事务管理类型 - 其中 type="JDBC" 是指直接使用了 JDBC 的管理器方式来“提交”和“回滚”设置 -->
+            <transactionManager type="JDBC"/>
+            <!-- dataSource 指数据源配置 - type="POOLED" 是指“数据源连接池”使用 JDBC 的 POOLED 对象实现连接 -->
+            <dataSource type="POOLED">
+                <!-- 1.加载数据库驱动 -->
+                <property name="driver" value="${jdbc.driver}"/>
+                <!-- 2.数据库连接地址 -->
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 注册映射文件：描述实体对象与数据库表之间的对应关系 -->
+    <mappers>
+        <!-- 可以有多个 mapper.xml 映射文件 -->
+        <mapper resource="mapper/find-by-any-field-mapper.xml"/>
+        <mapper resource="mapper/find-by-id-mapper.xml"/>
+        <mapper resource="mapper/find-by-userName-mapper.xml"/>
+        <mapper resource="mapper/find-by-password-mapper.xml"/>
+        <mapper resource="mapper/remove-mapper.xml"/>
+    </mappers>
+
+</configuration>
+
