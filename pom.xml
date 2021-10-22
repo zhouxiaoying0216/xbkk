@@ -54,6 +54,36 @@
             <version>3.4</version>
         </dependency>
     </dependencies>
+    <!-- 测试打包 -->
+    <build>
+
+        <plugins>
+
+            <plugin>
+                <!--
+
+https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+
+
+                <configuration>
+                    <!-- testng.xml 文件路径 -->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>
+                            ./src/main/resources/testcase/addUser/addUser.xml
+                        </suiteXmlFile>
+                        <suiteXmlFile>
+                            ./src/main/resources/testcase/findUser/findUser.xml
+                        </suiteXmlFile>
+                    </suiteXmlFiles>
+
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+    </build>
 
 
 </project>
