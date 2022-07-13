@@ -22,7 +22,7 @@ public class QueryProductInfo {
 
         Map<String, Object> data = new HashMap<String, Object>();
 
-        data.put("uidkey", ""); //渠道商识别码
+        data.put("uidkey", "2D5C02B372"); //渠道商识别码
         String requestdata = JSON.toJSONString(data);
         String response = RequestUtils.postRequest(url, requestdata);
         System.out.println("查询产品接口返回参数" + response);

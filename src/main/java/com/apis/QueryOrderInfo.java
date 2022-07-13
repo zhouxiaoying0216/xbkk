@@ -18,14 +18,15 @@ public class QueryOrderInfo {
     public void queryOrderInfo() throws Exception {
 
         String url = Env_test.queryo_url;
-        String secret="9b11f4f85f9e6cf5a7b233e5cf12951b";
+        String secret="78cafd64beeaa808eb61e2ef54eccc17";
         Map<String, Object> data = new HashMap<String, Object>();
-        data.put("uidkey", "2D5C02B372"); //渠道商识别码
-        data.put("order_no", "109722");//订单号
+        data.put("uidkey", "604D5E5EAE"); //渠道商识别码
+        data.put("order_no", "202202221575");//订单号
         String sign= SignUtil.sign(data, secret);
         System.out.println("sign:"+sign);
         data.put("sign", sign);//
         String requestdata = JSON.toJSONString(data);
+        System.out.println("查询订单请求参数" + requestdata);
         String response = RequestUtils.postRequest(url, requestdata);
         System.out.println("查询订单接口返回参数" + response);
     }

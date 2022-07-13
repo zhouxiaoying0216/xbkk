@@ -2,11 +2,13 @@ package com.apis;
 
 import com.alibaba.fastjson.JSON;
 import com.env.Env_test;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import com.utils.RequestUtils;
 import com.utils.SignUtil;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.Test;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,12 +23,12 @@ public class CreateOrder {
     public void createOrder() throws Exception {
 
         String url = Env_test.creato_url ;
-        String secret="9b11f4f85f9e6cf5a7b233e5cf12951b";
+        String secret="78cafd64beeaa808eb61e2ef54eccc17";
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("id", "27");//产品id
-        map.put("foodname", "燕麦拿铁（中杯）");//产品名称
-        map.put("num", "1");//产品数量
+        map.put("foodname", "燕麦拿铁");//产品名称
+        map.put("num", "2");//产品数量
         list.add(map);
 //        Map<String, Object> map1 = new HashMap<String, Object>();
 //        map1.put("id", "28");//产品id
@@ -35,11 +37,12 @@ public class CreateOrder {
 //        list.add(map1);
 
         Map<String, Object> data = new HashMap<String, Object>();
-        data.put("uidkey", "2D5C02B372");//渠道商识别码
-        data.put("order_no", RandomStringUtils.randomNumeric(6));//订单号
+        data.put("uidkey", "604D5E5EAE");//渠道商识别码
+        data.put("order_no", "202202221575");//订单号
         data.put("phone", "12000000021");//用户手机号
         data.put("openid", "123");//消费者唯一识别标识
         data.put("order_info", list);//餐品详情
+        System.out.println(data);
         String sign= SignUtil.sign(data, secret);
         System.out.println("sgin值:"+sign);
         data.put("sign",sign );//签名串
